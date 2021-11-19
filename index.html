@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application UI - Sidebar Layout</title>
     <link rel="stylesheet" href="./dist/tailwind.css">
+    <!-- <link rel="stylesheet" href="/style.css"> -->
 </head>
 
 <body>
@@ -114,6 +115,46 @@
                         </svg>
                         User
                     </a>
+
+                    <!-- collapse menu start  -->
+                    <div
+                        class="relative overflow-hidden text-white border-transparent border-l-4 hover:border-blue-600 hover:bg-gray-900 transition">
+                        <input type="checkbox"
+                            class="peer absolute top-0 opacity-0 h-5 inset-x-0 w-full  z-10 cursor-pointer" />
+                        <div class="flex items-center my-1 px-4 py-3 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 mr-3" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                            Components
+                        </div>
+
+                        <!-- arrow icon  -->
+                        <div
+                            class="text-white absolute top-4 right-4 cursor-pointer transition-transform duration-500 rotate-0 peer-checked:rotate-180">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                        <!-- arrow icon end -->
+                        <!-- submenu start  -->
+                        <div
+                            class="bg-gray-600 overflow-hidden transition-all duration-500 pl-7 max-h-0 peer-checked:max-h-auto">
+                            <a href="#"
+                                class="flex items-center my-1 px-4 py-1 text-white border-transparent border-l-4 hover:border-blue-600 hover:bg-gray-900 transition">
+                                Table
+                            </a>
+                            <a href="#"
+                                class="flex items-center my-1 px-4 py-1 text-white border-transparent border-l-4 hover:border-blue-600 hover:bg-gray-900 transition">
+                                Form
+                            </a>
+                        </div>
+                        <!-- submenu end  -->
+                    </div>
+                    <!-- collapse menu end  -->
 
                     <a href="#"
                         class="lg:hidden flex items-center my-1 px-4 py-3 text-white border-transparent border-l-4 hover:border-blue-600 hover:bg-gray-900 transition">
