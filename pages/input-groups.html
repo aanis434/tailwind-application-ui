@@ -1,0 +1,673 @@
+<!-- This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application UI - Sidebar Layout</title>
+    <link rel="stylesheet" href="../dist/tailwind.css" />
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+  </head>
+
+  <body>
+    <div id="wrapper" class="bg-gray-100 min-h-screen">
+      <!-- navbar  -->
+      <nav
+        class="
+          h-16
+          bg-white
+          shadow-sm
+          pl-8
+          lg:pl-80
+          pr-8
+          fixed
+          w-full
+          top-0
+          left-0
+          flex
+          items-center
+        "
+      >
+        <!-- hambarg menu  -->
+        <div id="hambarg" class="w-6 cursor-pointer lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </div>
+        <!-- search input  -->
+        <div class="relative hidden lg:block">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 absolute left-2 top-2 text-gray-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          <input
+            type="text"
+            name=""
+            id=""
+            class="
+              block
+              w-72
+              shadow
+              border-none
+              rounded-3xl
+              focus:outline-none
+              py-2
+              px-10
+              bg-gray-100
+              text-base text-gray-600
+            "
+          />
+        </div>
+        <!-- ./ search input  -->
+
+        <!-- left menu  -->
+        <div class="ml-auto flex items-center">
+          <!-- notification icon  -->
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 cursor-pointer text-gray-600 hover:text-gray-900"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              />
+            </svg>
+          </div>
+          <!-- user profile  -->
+          <div class="ml-4 relative">
+            <div id="dropdown" class="cursor-pointer">
+              <img
+                src="https://ui-avatars.com/api/?name=John+Doe"
+                class="h-8 w-8 rounded-full object-cover"
+                alt=""
+              />
+            </div>
+            <!-- drop down menu  -->
+            <div
+              id="dropdown-content"
+              class="
+                hidden
+                absolute
+                z-50
+                mt-2
+                rounded-md
+                shadow-lg
+                w-48
+                right-0
+                py-1
+                bg-gray-100
+              "
+            >
+              <div class="px-4 py-2 text-xs text-gray-400">Manage Account</div>
+              <a
+                href="#"
+                class="
+                  block
+                  px-4
+                  py-2
+                  text-sm
+                  leading-5
+                  text-gray-700
+                  hover:bg-gray-200
+                  transition
+                "
+                >Profile</a
+              >
+              <div class="border-t border-gray-100"></div>
+              <a
+                href="#"
+                class="
+                  block
+                  px-4
+                  py-2
+                  text-sm
+                  leading-5
+                  text-gray-700
+                  hover:bg-gray-200
+                  transition
+                "
+                >Logout</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- end navbar  -->
+
+      <!-- sidebar  -->
+      <div
+        id="sidebar"
+        class="
+          fixed
+          left-0
+          top-0
+          w-72
+          h-full
+          bg-gray-800
+          shadow-md
+          z-10
+          flex flex-col
+          transition-all
+        "
+      >
+        <!-- brand name  -->
+        <div
+          class="
+            text-white
+            font-bold
+            text-base
+            uppercase
+            text-center
+            py-5
+            bg-gray-900
+            relative
+          "
+        >
+          Admin Panel
+          <svg
+            id="sidebar-close"
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute block h-6 w-6 top-5 right-3 lg:hidden"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </div>
+        <!-- sidebar items  -->
+        <div class="flex flex-col justify-between flex-grow">
+          <div class="py-5">
+            <a
+              href="../index.html"
+              class="
+                flex
+                items-center
+                my-1
+                px-4
+                py-3
+                text-white
+                border-l-4 border-blue-600
+                bg-gray-900
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+              Dashboard
+            </a>
+            <a
+              href="#"
+              class="
+                flex
+                items-center
+                my-1
+                px-4
+                py-3
+                text-white
+                border-transparent border-l-4
+                hover:border-blue-600 hover:bg-gray-900
+                transition
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                />
+              </svg>
+              Category
+            </a>
+            <a
+              href="#"
+              class="
+                flex
+                items-center
+                my-1
+                px-4
+                py-3
+                text-white
+                border-transparent border-l-4
+                hover:border-blue-600 hover:bg-gray-900
+                transition
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                />
+              </svg>
+              Product
+            </a>
+            <a
+              href="#"
+              class="
+                flex
+                items-center
+                my-1
+                px-4
+                py-3
+                text-white
+                border-transparent border-l-4
+                hover:border-blue-600 hover:bg-gray-900
+                transition
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+              User
+            </a>
+
+            <!-- collapse menu start  -->
+            <div
+              class="
+                relative
+                overflow-hidden
+                text-white
+                border-transparent
+                hover:bg-gray-900
+                transition
+              "
+            >
+              <input
+                type="checkbox"
+                class="
+                  peer
+                  absolute
+                  top-0
+                  opacity-0
+                  h-12
+                  inset-x-0
+                  w-full
+                  z-10
+                  cursor-pointer
+                "
+              />
+              <div class="flex items-center my-1 px-4 py-3 cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 mr-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                  />
+                </svg>
+                Forms
+              </div>
+
+              <!-- arrow icon  -->
+              <div
+                class="
+                  text-white
+                  absolute
+                  top-4
+                  right-4
+                  cursor-pointer
+                  transition-transform
+                  duration-500
+                  rotate-0
+                  peer-checked:rotate-180
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <!-- arrow icon end -->
+              <!-- submenu start  -->
+              <div
+                class="
+                  bg-gray-600
+                  overflow-hidden
+                  transition-all
+                  duration-500
+                  max-h-0
+                  peer-checked:max-h-40
+                "
+              >
+                <a
+                  href="./form-layout.html"
+                  class="
+                    flex
+                    items-center
+                    px-6
+                    mt-1
+                    py-2
+                    text-white
+                    border-transparent border-l-4
+                    hover:border-blue-600 hover:bg-gray-900
+                    transition
+                  "
+                >
+                  Form Layout
+                </a>
+                <a
+                  href="./input-groups.html"
+                  class="
+                    flex
+                    items-center
+                    px-6
+                    mt-1
+                    py-2
+                    text-white
+                    border-transparent border-l-4
+                    hover:border-blue-600 hover:bg-gray-900
+                    transition
+                  "
+                >
+                  Input Groups
+                </a>
+                <a
+                  href="./sign-in.html"
+                  class="
+                    flex
+                    items-center
+                    px-6
+                    mt-1
+                    py-2
+                    text-white
+                    border-transparent border-l-4
+                    hover:border-blue-600 hover:bg-gray-900
+                    transition
+                  "
+                >
+                  Sign in
+                </a>
+              </div>
+              <!-- submenu end  -->
+            </div>
+            <!-- collapse menu end  -->
+
+            <a
+              href="#"
+              class="
+                lg:hidden
+                flex
+                items-center
+                my-1
+                px-4
+                py-3
+                text-white
+                border-transparent border-l-4
+                hover:border-blue-600 hover:bg-gray-900
+                transition
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
+              Logout
+            </a>
+          </div>
+        </div>
+        <!-- mobile sidebar extended  -->
+        <div class="lg:hidden block">
+          <div class="relative mx-5 mb-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 absolute left-2 top-2 text-gray-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <input
+              type="text"
+              name=""
+              id=""
+              class="
+                block
+                w-full
+                shadow
+                border-none
+                rounded-3xl
+                focus:outline-none
+                py-2
+                px-10
+                bg-gray-700
+                text-base text-gray-200
+              "
+              placeholder="Search"
+            />
+          </div>
+          <div class="border-t border-gray-700 flex items-center py-4 px-5">
+            <div class="cursor-pointer mr-4">
+              <img
+                src="https://ui-avatars.com/api/?name=John+Doe"
+                class="h-8 w-8 rounded-full object-cover"
+                alt=""
+              />
+            </div>
+            <a href="#" class="text-gray-200 text-md capitalize">John Doe</a>
+            <div class="ml-auto cursor-pointer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 cursor-pointer text-white hover:text-gray-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end sidebar  -->
+
+      <!-- main  -->
+      <main class="pt-24 pr-8 pl-8 lg:pl-80">
+        <h1 class="text-3xl text-gray-700 font-bold">Input Groups</h1>
+        <div class="bg-gray-50 rounded-md my-6 p-4">
+          <div class="w-80">
+            <label for="price" class="block text-sm font-medium text-gray-700"
+              >Price</label
+            >
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <div
+                class="
+                  absolute
+                  inset-y-0
+                  left-0
+                  pl-3
+                  flex
+                  items-center
+                  pointer-events-none
+                "
+              >
+                <span class="text-gray-500 sm:text-sm"> $ </span>
+              </div>
+              <input
+                type="text"
+                name="price"
+                id="price"
+                class="
+                  focus:ring-indigo-500 focus:border-indigo-500
+                  block
+                  w-full
+                  pl-7
+                  pr-12
+                  sm:text-sm
+                  border-gray-300
+                  rounded-md
+                "
+                placeholder="0.00"
+              />
+              <div class="absolute inset-y-0 right-0 flex items-center">
+                <label for="currency" class="sr-only">Currency</label>
+                <select
+                  id="currency"
+                  name="currency"
+                  class="
+                    focus:ring-indigo-500 focus:border-indigo-500
+                    h-full
+                    py-0
+                    pl-2
+                    pr-7
+                    border-transparent
+                    bg-transparent
+                    text-gray-500
+                    sm:text-sm
+                    rounded-md
+                  "
+                >
+                  <option>USD</option>
+                  <option>CAD</option>
+                  <option>EUR</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- end main  -->
+    </div>
+    <!-- end wrapper -->
+
+    <script>
+      document
+        .getElementById("dropdown")
+        .addEventListener("click", function () {
+          document
+            .getElementById("dropdown-content")
+            .classList.toggle("hidden");
+        });
+
+      document.getElementById("hambarg").addEventListener("click", function () {
+        document.getElementById("sidebar").classList.add("active");
+      });
+
+      document
+        .getElementById("sidebar-close")
+        .addEventListener("click", function () {
+          document.getElementById("sidebar").classList.remove("active");
+        });
+    </script>
+  </body>
+</html>
