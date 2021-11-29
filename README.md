@@ -1,4 +1,4 @@
-Project installation command step by step
+project installation command step by step
     - npm init package.json
     - npm install -D tailwindcss postcss autoprefixer vite
     - npx tailwindcss init -p
@@ -8,5 +8,5 @@ Project installation command step by step
     - modified script dev:vite in package.json
     - Finally, npm run dev
 
-Icons - https://heroicons.com/
-Avater - https://ui-avatars.com/
+Icon Pack - https://heroicons.com/
+Avatars - https://ui-avatars.com/
